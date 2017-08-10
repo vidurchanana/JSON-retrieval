@@ -1,5 +1,3 @@
-package org.HackerRank.Token;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,10 +8,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class CountryPopulations {
+public class RetrieveDataJSON {
 	JSONParser parser = new JSONParser();
 
-	public int noOfCountries(String str, int p){
+	public int yourMethod(String str, int p){		//With your required parameters
 		
 		int count = 0;
 	       
@@ -25,16 +23,16 @@ public class CountryPopulations {
 	       
 	        String inputLine;
 	        while ((inputLine = in.readLine()) != null) {               
-	            JSONArray countriesArray = (JSONArray) parser.parse(inputLine);
+	            JSONArray yourArray = (JSONArray) parser.parse(inputLine);
 	            
 	            // Loop through each item
-	            for (Object country : countriesArray) {
-	                JSONObject selectedCountry = (JSONObject) country;
+	            for (Object eacjJSONObject : yourArray) {
+	                JSONObject selectedJSONObject = (JSONObject) country;
 	
-	                String name = (String) selectedCountry.get("name");
+	                String name = (String) selectedJSONObject.get("name");
 	                name = name.toLowerCase();						//Important
 	                
-	                long population = (long) selectedCountry.get("population");
+	                long population = (long) selectedJSONObject.get("population");
 	                
 	                if(name.contains(str) && population > p){
 	                	System.out.println("Name of the country : " + name);
@@ -56,8 +54,7 @@ public class CountryPopulations {
 	}
 	
 	public static void main(String[] args){
-		CountryPopulations cp = new CountryPopulations();
 		String str = "un";
-		System.out.println(cp.noOfCountries(str, 0));
+		System.out.println(new CountryPopulations().noOfCountries(str, 0));
 	}
 }
